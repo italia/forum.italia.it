@@ -1,0 +1,18 @@
+<!-- Header -->
+<script type="text/discourse-plugin" version="0.8.19">
+/*
+Discourse.getUrl() is deprecated from 2.6.0
+replaced with:
+
+const getUrl = require("discourse-common/lib/get-url");
+getUrl.getAbsoluteURL("/")
+
+*/
+
+api.decorateWidget("home-logo:after", helper => {
+    return helper.h("div.forum-italia-branding", [
+        helper.h("div.forum-italia-branding-title", helper.h("a", {href: "https://forum.italia.it"}, "Forum Italia")),
+        helper.h("div.forum-italia-branding-tagline", helper.h("a", {href: "https://forum.italia.it"}, "Lo spazio di discussione sui servizi pubblici digitali"))
+    ]);
+});
+</script>

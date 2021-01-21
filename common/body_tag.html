@@ -1,0 +1,149 @@
+<div id="cookie-bar" class="cookie-bar js-CookieBar" aria-hidden="true">
+  <p class="cookie-disclaimer">Questo sito utilizza cookie tecnici, analytics e di terze parti. Proseguendo nella navigazione accetti l’utilizzo dei cookie.
+  </p>
+  <p class="cookie-buttons">
+    <button class="btn js-cookieBarAccept">Accetto</button>
+    <a id="cookie-link-to-privacy" href="https://forum.italia.it/privacy" target="_blank">Privacy policy</a>
+  </p>
+</div>
+
+<!-- Google analytics -->
+<script type = "text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+$(document).ready(function() {
+  var sendGaPageview = function() {
+    ga("create", "UA-96140462-2", "auto");
+    ga("set", "anonymizeIp", true);
+    ga("send", "pageview");
+  };
+  if ($.cookieBar && $.cookieBar.isAccepted()) {
+    sendGaPageview();
+  } else {
+    $(document).on("accept.cookiebar", sendGaPageview);
+  }
+});
+</script>
+
+<!-- Cookie bar -->
+<script type = "text/javascript">
+$.fn.cookieBar = function(options) {
+    var settings = $.extend({
+        'acceptButton': '.js-cookieBarAccept',
+        'secure': false,
+        'path': '/',
+        'domain': '',
+        'threshold': 500
+    }, options);
+
+    var _hide = function($cookiebar) {
+        $cookiebar
+            .attr('aria-hidden', 'true')
+            .attr('aria-live', 'off')
+            .hide();
+    }
+
+    var _show = function($cookiebar) {
+        $cookiebar
+            .attr('aria-hidden', 'false')
+            .attr('aria-live', 'polite')
+            .show();
+    }
+
+    var _accept = function($cookiebar) {
+        $.cookie('cookiebar', 'hide', {
+            path: settings.path,
+            secure: settings.secure,
+            domain: settings.domain,
+            expires: 30
+        });
+        $(document).trigger('accept.cookiebar', [$cookiebar]);
+    }
+
+    $(document).on('accept.cookiebar', function(e, $cookiebar) {
+        _hide($cookiebar);
+    });
+
+    $.cookieBar = $.cookieBar || {}
+
+    $.cookieBar.isAccepted = function() {
+        return $.cookie('cookiebar') === 'hide'
+    }
+
+    return this.each(function() {
+        var $cookiebar = $(this)
+
+        if (!$.cookieBar.isAccepted()) {
+            if (settings.threshold > 0) {
+                $(window).on('scroll.cookiebar', (function() {
+                    if ($(window).scrollTop() > settings.threshold) {
+                        $(window).unbind('scroll.cookiebar');
+                        _accept($cookiebar);
+                    }
+                }))
+            }
+            _show($cookiebar);
+        }
+
+        $cookiebar
+            .find(settings.acceptButton)
+            .click(function() {
+                _accept($cookiebar);
+                return false;
+            });
+    });
+}
+
+$(document).ready(function() {
+    var opts = {
+      'acceptButton': '.js-cookieBarAccept',
+      'secure': false,
+      'path': '/',
+      'domain': ''
+    }
+
+    $('.js-CookieBar').cookieBar(opts)
+})
+</script>
+
+<!-- Offcanvas -->
+<script type = "text/javascript">
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t.Froffcanvas=e()}}(function(){return function e(t,n,o){function i(c,f){if(!n[c]){if(!t[c]){var a="function"==typeof require&&require;if(!f&&a)return a(c,!0);if(r)return r(c,!0);var s=new Error("Cannot find module '"+c+"'");throw s.code="MODULE_NOT_FOUND",s}var u=n[c]={exports:{}};t[c][0].call(u.exports,function(e){var n=t[c][1][e];return i(n?n:e)},u,u.exports,e,t,n,o)}return n[c].exports}for(var r="function"==typeof require&&require,c=0;c<o.length;c++)i(o[c]);return i}({1:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),Element.prototype.matches=Element.prototype.matches||Element.prototype.mozMatchesSelector||Element.prototype.msMatchesSelector||Element.prototype.oMatchesSelector||Element.prototype.webkitMatchesSelector;var o=function(){function e(e){"function"==typeof e&&setTimeout(e,0)}function t(e,t){for(;e&&!e.matches(t);)e=e.parentElement;return e}function n(e){return e.getAttribute("id")}function o(e){e.setAttribute("aria-hidden",!0)}function i(e){e.removeAttribute("aria-hidden")}function r(t){t.style.visibility="visible",t.setAttribute("aria-hidden",!1),t.setAttribute("tabindex",-1),t.focus(),e(m),e(y),e(p),e(v),t.scrollTop=0,t.classList.add(C)}function c(){var e=arguments.length<=0||void 0===arguments[0]?U:arguments[0],t=arguments.length<=1||void 0===arguments[1]?!0:arguments[1];e.setAttribute("aria-hidden",!0),e.removeAttribute("tabindex"),e.blur(),e.style.visibility="hidden",h(e),b(),E(),d(e),e.classList.remove(C),t&&(N.focus(),N=null)}function f(){F.forEach(function(e){i(e),m(e),h(e),e.classList.remove(j),e.classList.remove(C),e.style.visibility=""}),E(),b(),N=null,U=null}function a(e){var t=e.currentTarget.getAttribute("aria-controls"),n=O.getElementById(t);U&&c(U,!1),N=e.currentTarget,U=n,r(n)}function s(){c()}function u(e){var n=e.target===U,o=t(e.target,k);n||o||c()}function l(e){27===e.keyCode&&c()}function d(e){var t=D(A+'[aria-controls="'+n(e)+'"]');t.forEach(function(e){return e.addEventListener("click",a)})}function v(){var e=arguments.length<=0||void 0===arguments[0]?U:arguments[0],t=D(q,e)[0];t.addEventListener("click",s)}function p(){O.addEventListener("click",u)}function y(){O.addEventListener("keydown",l)}function m(){var e=arguments.length<=0||void 0===arguments[0]?U:arguments[0],t=D(A+'[aria-controls="'+n(e)+'"]');t.forEach(function(e){return e.removeEventListener("click",a)})}function h(){var e=arguments.length<=0||void 0===arguments[0]?U:arguments[0],t=D(q,e)[0];t.removeEventListener("click",s)}function E(){O.removeEventListener("click",u)}function b(){O.removeEventListener("keydown",l)}function g(){F&&F.forEach(function(e){o(e),d(e),e.classList.add(j)})}var L=arguments.length<=0||void 0===arguments[0]?{}:arguments[0],w=L.selector,k=void 0===w?".js-fr-offcanvas":w,x=L.openSelector,A=void 0===x?".js-fr-offcanvas-open":x,S=L.closeSelector,q=void 0===S?".js-fr-offcanvas-close":S,M=L.readyClass,j=void 0===M?"fr-offcanvas--is-ready":M,T=L.activeClass,C=void 0===T?"fr-offcanvas--is-active":T,O=document,_=O.documentElement,D=function(e){var t=arguments.length<=1||void 0===arguments[1]?O:arguments[1];return[].slice.call(t.querySelectorAll(e))};if("querySelector"in O&&"addEventListener"in window&&_.classList){var F=D(k),N=null,U=null;return g(),{init:g,destroy:f}}};n["default"]=o,t.exports=n["default"]},{}]},{},[1])(1)});
+
+const handleModalScroll = function() {
+    $('.js-fr-offcanvas').on('transitionend', function() {
+        if (!$('.js-fr-offcanvas').hasClass('fr-offcanvas--is-active')) {
+            $(window).off('scroll.offcanvas');
+            $(document).off('touchmove.offcanvas');
+        } else {
+            var _scrollTop = $(window).scrollTop();
+            $(window).on('scroll.offcanvas', function() { $(window).scrollTop(_scrollTop) });
+            $(document).on('touchmove.offcanvas', function() { $(window).scrollTop(_scrollTop) });
+        }
+    });
+}
+
+const handleModal = function(e) {
+  if (e && $('.js-fr-offcanvas').hasClass('fr-offcanvas--is-active') && !$(e.target).is('.js-fr-offcanvas-content')) {
+    $(e.target).find('.js-fr-offcanvas-close').get(0).click()
+  }
+  $('.js-fr-offcanvas').one('click', handleModal)
+}
+
+Froffcanvas();
+handleModal();
+handleModalScroll();
+
+</script>
+
+<!-- Progress bar position adjust -->
+<script type = "text/javascript">
+const progressPosition = function() {
+    $('#topic-progress').css('margin-right', 'calc(' + $('#main-outlet').css('margin-right') + ' - 1em)');
+}
+$(window).resize(progressPosition);
+$(document).ready(progressPosition);
+</script>
