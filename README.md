@@ -1,8 +1,10 @@
-# design-discourse-theme
-Italia Design Theme for Discourse
+# forum.italia.it Discourse Theme
 
-This is the theme currently in use on Forum Italia: https://forum.italia.it.
+Design system .italia theme for Discourse
 
-To install this theme, simply download the repository as .zip file and go to `https://yourdiscourseinstallation.it/admin/customize/themes` to upload it
+This is the theme currently in use on [Forum Italia](https://forum.italia.it).
+
+To install this theme, simply download the repository as .zip file and
+go to `https://forum.italia.it/admin/customize/themes` to upload it.
 
 Happy hacking!

@@ -1,5 +1,5 @@
 {
-  "name": "Forum Italia",
+  "name": "Forum Italia v2",
   "component": false,
   "license_url": null,
   "about_url": null,
@@ -10,9 +10,28 @@
   "assets": {
     "ita-eot": "assets/ita-eot.eot",
     "ita-ttf": "assets/ita-ttf.ttf",
-    "ita-woff": "assets/ita-woff.woff"
+    "ita-woff": "assets/ita-woff.woff",
+    "titillium-latin-600": "assets/titillium-latin-600.woff2",
+    "titillium-latin-ext-600": "assets/titillium-latin-ext-600.woff2",
+    "titillium-latin-400": "assets/titillium-latin-400.woff2",
+    "titillium-latin-ext-400": "assets/titillium-latin-ext-400.woff2",
+    "titillium-latin-300": "assets/titillium-latin-300.woff2",
+    "titillium-latin-ext-300": "assets/titillium-latin-ext-300.woff2"
   },
   "color_schemes": {
+    "Forum Italia": {
+      "primary": "222222",
+      "secondary": "ffffff",
+      "tertiary": "0066cc",
+      "quaternary": "e45735",
+      "header_background": "0066cc",
+      "header_primary": "ffffff",
+      "highlight": "ffff4d",
+      "danger": "e45735",
+      "success": "009900",
+      "love": "fa6c8d",
+      "hover": "919191"
+    }
   },
   "modifiers": {
   },
