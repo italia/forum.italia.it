@@ -370,5 +370,7 @@ div.home-logo-wrapper-outlet {
 }
 
 div.forum-italia-branding {
-  color: var(--header_primary);
+  a, a:visited {
+    color: var(--header_primary);
+  }
 }
