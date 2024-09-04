@@ -364,3 +364,13 @@ html {
     }
   }
 }
+
+div.home-logo-wrapper-outlet {
+  display: flex;
+}
+
+div.forum-italia-branding {
+  a, a:visited {
+    color: var(--header_primary);
+  }
+}
