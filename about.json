@@ -8,9 +8,6 @@
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
   "assets": {
-    "ita-eot": "assets/ita-eot.eot",
-    "ita-ttf": "assets/ita-ttf.ttf",
-    "ita-woff": "assets/ita-woff.woff",
     "titillium-latin-600": "assets/titillium-latin-600.woff2",
     "titillium-latin-ext-600": "assets/titillium-latin-ext-600.woff2",
     "titillium-latin-400": "assets/titillium-latin-400.woff2",
